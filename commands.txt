@@ -1,4 +1,3 @@
-creating environment.yml: conda env export --name vv-ratio --file environment.yml
-updating environment: conda env update --name vv-ratio --file environment.yml  --prune
+creating environment.yml: conda env export --name algo-grind --file environment.yml
+updating environment: conda env update --name algo-grind --file environment.yml  --prune
 creating env: conda env create --file environment.yml
-con
