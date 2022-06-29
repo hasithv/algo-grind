@@ -23,10 +23,11 @@ def create_roi(directory=""):
     tickers = pd.read_csv("constituents.csv")
     for ticker in tickers["ticker"]:
         df = pd.read_csv(directory + ticker + "-m.csv")
-        df["roi"] = (df["Adjusted Close"]-df["Adjusted Close"][0])/df["Adjusted Close"][0]
+        df["roi"] = df["Adjusted Close"].pct_change()
         df.to_csv(directory + ticker + "-m.csv")
 
 
 if __name__ == "__main__":
     # get_constituents().to_csv("constituents.csv", encoding="utf-8", line_terminator="", index=False)
+    # make_monthly()
     create_roi(directory="monthly-data/")
