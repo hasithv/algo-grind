@@ -25,10 +25,10 @@ def run_fama(ticker, months):
             ff_model = sm.OLS(y, X, missing="drop").fit()
             intercept, b1, b2, b3 = ff_model.params
 
-            rf = factors_df[i - months:i]['RF'].mean()
-            market_premium = factors_df[i - months:i]['Mkt-RF'].mean()
-            size_premium = factors_df[i - months:i]['SMB'].mean()
-            value_premium = factors_df[i - months:i]['HML'].mean()
+            rf = factors_df[i - 1:i]['RF'].mean()
+            market_premium = factors_df[i - 1:i]['Mkt-RF'].mean()
+            size_premium = factors_df[i - 1:i]['SMB'].mean()
+            value_premium = factors_df[i - 1:i]['HML'].mean()
 
             ticker_df["ER"][i] = rf + b1 * market_premium + b2 * size_premium + b3 * value_premium
 
