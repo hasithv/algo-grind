@@ -27,12 +27,12 @@ def run_fama(ticker, months):
 
             ticker_df["ER"][i] = model.predict([factors_df.iloc[i-1][0:3]])
 
-        rx = ticker_df["roi"]
-        ry = ticker_df["ER"]
-        rx = sm.add_constant(rx)
-        rmodel = sm.OLS(ry, rx, missing="drop").fit()
+        rx = ticker_df[months:-1][["roi"]]
+        ry = ticker_df[months:-1][["ER"]]
+        rmodel = linear_model.LinearRegression()
+        rmodel.fit(rx, ry)
 
-        return ticker_df, rmodel.rsquared
+        return ticker_df, rmodel.score(rx, ry)
 
 
 if __name__ == "__main__":
@@ -62,7 +62,7 @@ if __name__ == "__main__":
 
             analysis_df.loc[ticker] = [ff_model.rsquared, ff_model.rsquared_adj]
 """
-    x = run_fama("MS-PF", 12)[0]
+    x, r2 = run_fama("GS-PJ", 12)
 
     plt.subplot(211)
     plt.bar(x.index, x["ER"], label="ER", alpha=0.5)
