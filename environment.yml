@@ -1,5 +1,6 @@
 name: algo-grind
 channels:
+  - conda-forge
   - defaults
 dependencies:
   - argon2-cffi=21.3.0=pyhd3eb1b0_0
@@ -34,6 +35,7 @@ dependencies:
   - ipywidgets=7.6.5=pyhd3eb1b0_1
   - jedi=0.18.1=py38haa95532_1
   - jinja2=3.0.3=pyhd3eb1b0_0
+  - joblib=1.1.0=pyhd3eb1b0_0
   - jpeg=9e=h2bbff1b_0
   - jsonschema=4.4.0=py38haa95532_0
   - jupyter=1.0.0=py38_7
@@ -65,11 +67,12 @@ dependencies:
   - numexpr=2.8.1=py38hb80d3ca_2
   - numpy=1.22.3=py38h7a0a035_0
   - numpy-base=1.22.3=py38hca35cd5_0
-  - openssl=1.1.1o=h2bbff1b_0
+  - openssl=1.1.1p=h2bbff1b_0
   - packaging=21.3=pyhd3eb1b0_0
   - pandas=1.4.2=py38hd77b12b_0
   - pandocfilters=1.5.0=pyhd3eb1b0_0
   - parso=0.8.3=pyhd3eb1b0_0
+  - patsy=0.5.2=pyhd8ed1ab_0
   - pickleshare=0.7.5=pyhd3eb1b0_1003
   - pillow=9.0.1=py38hdc2b20a_0
   - pip=21.2.2=py38haa95532_0
@@ -85,6 +88,7 @@ dependencies:
   - python=3.8.13=h6244533_0
   - python-dateutil=2.8.2=pyhd3eb1b0_0
   - python-fastjsonschema=2.15.1=pyhd3eb1b0_0
+  - python_abi=3.8=2_cp38
   - pytz=2022.1=py38haa95532_0
   - pywin32=302=py38h2bbff1b_2
   - pywinpty=2.0.2=py38h5da7b33_0
@@ -92,7 +96,9 @@ dependencies:
   - qt=5.9.7=vc14h73c81de_0
   - qtconsole=5.3.0=pyhd3eb1b0_0
   - qtpy=2.0.1=pyhd3eb1b0_0
+  - scikit-learn=1.0.2=py38hf11a4ad_1
   - scipy=1.7.3=py38h0a974cb_0
+  - seaborn=0.11.2=pyhd3eb1b0_0
   - send2trash=1.8.0=pyhd3eb1b0_1
   - setuptools=61.2.0=py38haa95532_0
   - sip=4.19.13=py38hd77b12b_0
@@ -100,8 +106,10 @@ dependencies:
   - soupsieve=2.3.1=pyhd3eb1b0_0
   - sqlite=3.38.5=h2bbff1b_0
   - stack_data=0.2.0=pyhd3eb1b0_0
+  - statsmodels=0.13.2=py38hbdcd294_0
   - terminado=0.13.1=py38haa95532_0
   - testpath=0.6.0=py38haa95532_0
+  - threadpoolctl=2.2.0=pyh0d69192_0
   - tk=8.6.12=h2bbff1b_0
   - tornado=6.1=py38h2bbff1b_0
   - traitlets=5.1.1=pyhd3eb1b0_0
@@ -124,6 +132,8 @@ dependencies:
     - charset-normalizer==2.0.12
     - getfamafrenchfactors==0.0.5
     - idna==3.3
+    - plotly==5.9.0
     - requests==2.28.0
+    - tenacity==8.0.1
     - urllib3==1.26.9
 prefix: C:\Users\hasit\anaconda3\envs\algo-grind
