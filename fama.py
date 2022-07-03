@@ -5,6 +5,22 @@ from sklearn import linear_model
 import statsmodels.api as sm
 
 
+def next_smb(smb):
+    return (1 - 0.9702) * smb - 0.0033
+
+
+def next_hml(hml):
+    return (1 - 0.7048) * hml + 0.0088
+
+
+def next_mktrf(mktrf):
+    return (1 - 0.9291) * mktrf + 0.021
+
+
+def next_factors(factors):
+    return [[next_mktrf(factors[0]), next_smb(factors[1]), next_hml(factors[2])]]
+
+
 def run_fama(ticker, months):
     ticker_df = pd.read_csv("monthly-data/" + ticker + "-m.csv", index_col="Date")
     ticker_df = ticker_df.drop(ticker_df.columns[0], axis=1)
@@ -25,7 +41,7 @@ def run_fama(ticker, months):
             model = linear_model.LinearRegression()
             model.fit(X, y)
 
-            ticker_df["ER"][i] = model.predict([factors_df.iloc[i-1][0:3]])
+            ticker_df["ER"][i] = model.predict(next_factors(factors_df.iloc[i - 1][0:3]))
 
         rx = ticker_df[months:-1][["roi"]]
         ry = ticker_df[months:-1][["ER"]]
@@ -33,7 +49,8 @@ def run_fama(ticker, months):
         rmodel.fit(rx, ry)
 
         return ticker_df, rmodel.score(rx, ry)
-
+    else:
+        return ticker_df, -99.99
 
 if __name__ == "__main__":
     """
@@ -62,7 +79,7 @@ if __name__ == "__main__":
 
             analysis_df.loc[ticker] = [ff_model.rsquared, ff_model.rsquared_adj]
 """
-    x, r2 = run_fama("GS-PJ", 12)
+    x, r2 = run_fama("MSFT", 12)
 
     plt.subplot(211)
     plt.bar(x.index, x["ER"], label="ER", alpha=0.5)
